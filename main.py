@@ -1,8 +1,8 @@
 from components.instanceCounter import pdfExtract
 
 def main():
-    pdf = input('Enter the file path of a pdf document \
-(if none press enter and program will default to the book Alcoholics Anonymous): ')
+    pdf = input('Enter the file path of a pdf document (if none '
+    'press enter and program will default to the book Alcoholics Anonymous): ')
     if pdf == '':
         pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
     full_book = pdfExtract(pdf)
