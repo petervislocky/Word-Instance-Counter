@@ -1,5 +1,4 @@
 import fitz
-import re
 
 
 class pdfExtract:
@@ -38,19 +37,3 @@ class pdfExtract:
             count += 1
             index = full_text_lower.find(target_word_lower, index + 1)
         return count
-
-        #pattern = re.compile(r'\b' + re.escape(target_word_lower) + r'\b|\b' + re.escape(target_word_lower)+ r'[-,;:".?!\'(\\/)]?\w+\b')
-        #count = len(pattern.findall(full_text_lower))
-        #return count
-            
-
-def test():
-    pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
-    full_book = pdfExtract(pdf)
-    word = 'faith'
-    print(full_book.word_count(word))
-    
-    
-
-if __name__ == '__main__':
-    test()
