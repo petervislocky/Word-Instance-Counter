@@ -37,3 +37,12 @@ class pdfExtract:
             count += 1
             index = full_text_lower.find(target_word_lower, index + 1)
         return count
+    
+    def return_full_sentences(self, target_word):
+        full_text = self.extract_text()
+        sentences = full_text.split('.')
+        target_sentences = []
+        for sentence in sentences:
+            if target_word in sentence:
+                target_sentences.append(sentence.strip())
+        return target_sentences
