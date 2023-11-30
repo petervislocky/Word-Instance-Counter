@@ -1,11 +1,6 @@
 from components.instanceCounter import pdfExtract
-from components.StringUtilities import StringUtilities
 
-def test():
-    test_sentence = 'This is a sentence. this is not. This is also a sentence.'
-    formatted = StringUtilities.custom_split(test_sentence, 't', '.')
-    print(formatted)
-
+# TODO make this program only for this Big Book pdf
 def main():
     pdf = input('Enter the file path of a pdf document (if none '
     'press enter and program will default to the book Alcoholics Anonymous): ')
@@ -18,9 +13,11 @@ def main():
     word_count = full_book.word_count(word_to_find)
     sentences_list = full_book.return_full_sentences(word_to_find)
     print(word_count)
-    for sentences in sentences_list:
-        print(StringUtilities.custom_split(sentences, 'B', '.' ))
+    num = 0
+    for sentence in sentences_list:
+        num += 1
+        print(num, sentence) # TODO format this better
     
 
 if __name__ == '__main__':
-    test()
+    main()
