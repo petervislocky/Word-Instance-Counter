@@ -1,6 +1,5 @@
 import fitz
 
-
 class pdfExtract:
 
     def __init__(self, pdf_path) -> None:
