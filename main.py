@@ -1,8 +1,6 @@
 from components.instanceCounter import pdfExtract
 
-# TODO make this program only for this Big Book pdf
 def main():
-    
     pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
     full_book = pdfExtract(pdf)
     print('Will return how many times a given word appears in a pdf')
