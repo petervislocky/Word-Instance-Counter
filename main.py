@@ -2,12 +2,9 @@ from components.instanceCounter import pdfExtract
 
 # TODO make this program only for this Big Book pdf
 def main():
-    pdf = input('Enter the file path of a pdf document (if none '
-    'press enter and program will default to the book Alcoholics Anonymous): ')
-    raw_pdf = rf'{pdf}'
-    if pdf == '':
-        raw_pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
-    full_book = pdfExtract(raw_pdf)
+    
+    pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
+    full_book = pdfExtract(pdf)
     print('Will return how many times a given word appears in a pdf')
     word_to_find = input('Enter a word: ')
     word_count = full_book.word_count(word_to_find)
