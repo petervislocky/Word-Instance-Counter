@@ -9,10 +9,18 @@ def main():
     sentences_list = full_book.return_full_sentences(word_to_find)
     print(word_count)
     num = 0
-    for sentence in sentences_list:
-        num += 1
-        print(num, sentence) # TODO format this better
-    
+    #this while loop is busted I just am too tired to fix it now
+    outputCount = 0
+    while outputCount < 20:
+        outputCount += 1    
+        for sentence in sentences_list:
+            num += 1
+            print(f'{num}: {sentence}\n')
+        seeMore = input('See more? (y/n)')
+        if seeMore.lower() == 'y':
+            outputCount = 0
+        else:
+            break
 
 if __name__ == '__main__':
     main()

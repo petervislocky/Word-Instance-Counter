@@ -6,6 +6,7 @@ class pdfExtract:
         self.pdf_path = pdf_path
         
     def extract_text(self):
+        """Extracts readable text from fitz object"""
         book = fitz.open(self.pdf_path)
         text = ''
         for page_number in range(book.page_count):
@@ -15,6 +16,7 @@ class pdfExtract:
         return text
     
     def get_text_from_page(self, page_number):
+        """Returns readable text from a specific page number only"""
         book = fitz.open(self.pdf_path)
         if 1 <= page_number < book.page_count:
             page = book[page_number]
@@ -22,10 +24,12 @@ class pdfExtract:
             book.close()
             return text
         else:
+            print('Page number does not exist')
             book.close()
             return None
 
     def word_count(self, target_word):
+        """Returns number of instances of target_word in PDF"""
         full_text = self.extract_text()
         # converting to lowercase to find all instances regardless of case
         full_text_lower = full_text.lower()
@@ -38,6 +42,7 @@ class pdfExtract:
         return count
     
     def return_full_sentences(self, target_word):
+        """Returns each sentence containing target_word in PDF"""
         full_text = self.extract_text()
         sentences = full_text.split('.')
         target_sentences = []
