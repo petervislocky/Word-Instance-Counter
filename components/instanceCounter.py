@@ -44,8 +44,8 @@ class pdfExtract:
     
     def return_full_sentences(self, target_word):
         """ Returns each sentence containing target_word in PDF.
-            Uses nltk as a dependency, must be downloaded at
-            beginning of script """
+            Uses nltk as a dependency, 'punkt' must be downloaded 
+            at beginning of script """
         full_text = self.extract_text()
         sentences = sent_tokenize(full_text)
         target_sentences = []

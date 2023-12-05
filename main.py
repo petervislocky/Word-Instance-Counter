@@ -14,15 +14,15 @@ def main():
     print(word_count)
    
     num = 0
-    outputCount = 0
+    output_count = 0
 
     while num < len(sentences_list):
         remainingSentences = len(sentences_list) - num
         
         for i in range(20):
             if num < len(sentences_list):
-                outputCount += 1
-                print(f'{outputCount}: {sentences_list[num]}\n')
+                output_count += 1
+                print(f'{output_count}: {sentences_list[num]}\n')
                 num += 1
             else:
                 break
@@ -30,12 +30,12 @@ def main():
         if num >= len(sentences_list):
             break
         
-        seeMore = input('See more? (y/n) ')
+        see_more = input('See more? (y/n) ')
 
-        if seeMore.lower() == 'n':
+        if see_more.lower() == 'n':
             break
 
-        if seeMore.lower() != 'y' and seeMore.lower() != 'n':
+        if see_more.lower() != 'y' and see_more.lower() != 'n':
             print('Invalid input, defualting to yes\n')
             continue
 
