@@ -1,4 +1,5 @@
 import fitz
+from nltk.tokenize import sent_tokenize
 
 class pdfExtract:
 
@@ -42,11 +43,13 @@ class pdfExtract:
         return count
     
     def return_full_sentences(self, target_word):
-        """Returns each sentence containing target_word in PDF"""
+        """ Returns each sentence containing target_word in PDF.
+            Uses nltk as a dependency, must be downloaded at
+            beginning of script """
         full_text = self.extract_text()
-        sentences = full_text.split('.')
+        sentences = sent_tokenize(full_text)
         target_sentences = []
         for sentence in sentences:
-            if target_word in sentence:
-                target_sentences.append(sentence.strip())
+            if target_word.lower() in sentence.lower():
+                target_sentences.append(sentence)
         return target_sentences
