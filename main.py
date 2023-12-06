@@ -4,38 +4,57 @@ from components.instanceCounter import pdfExtract
 nltk.download('punkt')
 
 def main():
-    pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
-    full_book = pdfExtract(pdf)
-
-    print('Will return how many times a given word appears in a pdf')
-    word_to_find = input('Enter a word: ')
-    word_count = full_book.word_count(word_to_find)
-    sentences_list = full_book.return_full_sentences(word_to_find)
-    print(word_count)
-   
-    num = 0
-    output_count = 0
-
-    while num < len(sentences_list):
+    while True:
+        print('Will return how many times a given word appears in a pdf\n'
+              'Press Enter to default to the Big Book of AA')
         
-        for i in range(20):
-            if num < len(sentences_list):
-                output_count += 1
-                print(f'{output_count}: {sentences_list[num]}\n')
-                num += 1
-            else:
+        default_pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
+        user_pdf = input('Enter the path of the pdf file you would like to search: ')
+        raw_pdf = rf'{user_pdf}'
+        
+        if user_pdf == '':
+            full_book = pdfExtract(default_pdf)
+        else:
+            full_book = pdfExtract(raw_pdf)
+        
+        word_to_find = input('Enter a word: ')
+        word_count = full_book.word_count(word_to_find)
+        sentences_list = full_book.return_full_sentences(word_to_find)
+        print(f'{word_to_find} appears {word_count} times in this PDF\n')
+    
+        num = 0
+        output_count = 0
+
+        while num < len(sentences_list):
+            
+            for i in range(20):
+                if num < len(sentences_list):
+                    output_count += 1
+                    print(f'{output_count}: {sentences_list[num]}\n')
+                    num += 1
+                else:
+                    break
+            
+            if num >= len(sentences_list):
                 break
-        
-        if num >= len(sentences_list):
-            break
-        
-        see_more = input('See more? (y/n) ')
+            
+            print(f'Showing {output_count} out of {len(sentences_list)} results')
+            see_more = input('See more? (y/n) ')
 
-        if see_more.lower() == 'n':
-            break
+            if see_more.lower() == 'n':
+                break
 
-        if see_more.lower() != 'y' and see_more.lower() != 'n':
-            print('Invalid input, defualting to yes\n')
+            if see_more.lower() != 'y' and see_more.lower() != 'n':
+                print('Invalid input, defualting to yes')
+                continue
+        
+        print(f'Showing {output_count} out of {len(sentences_list)} results')
+        run_again = input('Run the program again? (y/n) ')
+        
+        if run_again.lower() == 'n':
+            break
+        if run_again.lower() != 'n' and run_again.lower() != 'y':
+            print('Invalid input, defaulting to yes')
             continue
 
 if __name__ == '__main__':

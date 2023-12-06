@@ -10,6 +10,7 @@ class pdfExtract:
         """Extracts readable text from fitz object"""
         book = fitz.open(self.pdf_path)
         text = ''
+        
         for page_number in range(book.page_count):
             page = book[page_number]
             text += page.get_text()
@@ -19,6 +20,7 @@ class pdfExtract:
     def get_text_from_page(self, page_number):
         """Returns readable text from a specific page number only"""
         book = fitz.open(self.pdf_path)
+        
         if 1 <= page_number < book.page_count:
             page = book[page_number]
             text = page.get_text()
@@ -37,6 +39,7 @@ class pdfExtract:
         target_word_lower = target_word.lower()
         count = 0
         index = full_text_lower.find(target_word_lower)
+        
         while index != -1:
             count += 1
             index = full_text_lower.find(target_word_lower, index + 1)
@@ -49,7 +52,11 @@ class pdfExtract:
         full_text = self.extract_text()
         sentences = sent_tokenize(full_text)
         target_sentences = []
+        
         for sentence in sentences:
             if target_word.lower() in sentence.lower():
-                target_sentences.append(sentence)
+                # target_word gets replaced with itself in bold text using ANSI escape code for bold
+                # and underlined
+                highlighted_sentence = sentence.replace(target_word, f'\033[1;4m{target_word}\033[0m')
+                target_sentences.append(highlighted_sentence)
         return target_sentences
