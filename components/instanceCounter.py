@@ -55,7 +55,7 @@ class pdfExtract:
         
         for sentence in sentences:
             if target_word.lower() in sentence.lower():
-                # target_word gets replaced with itself in bold text using ANSI escape code for bold
+                # replacing target_word with itself in bold text, using the ANSI escape code for bold
                 # and underlined
                 highlighted_sentence = sentence.replace(target_word, f'\033[1;4m{target_word}\033[0m')
                 target_sentences.append(highlighted_sentence)
