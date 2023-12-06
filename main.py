@@ -17,7 +17,6 @@ def main():
     output_count = 0
 
     while num < len(sentences_list):
-        remainingSentences = len(sentences_list) - num
         
         for i in range(20):
             if num < len(sentences_list):
