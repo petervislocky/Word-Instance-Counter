@@ -3,6 +3,11 @@ from components.instanceCounter import pdfExtract
 
 nltk.download('punkt')
 
+def get_user_pdf_path():
+    user_pdf = input('Enter the path of the pdf file you would like to search: ')
+    return   rf'{user_pdf}' if user_pdf else r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
+    
+
 def main():
     while True:
         print('Will return how many times a given word appears in a pdf\n'
