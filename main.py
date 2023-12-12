@@ -6,29 +6,24 @@ nltk.download('punkt')
 def get_user_pdf_path():
     user_pdf = input('Enter the path of the pdf file you would like to search: ')
     return   rf'{user_pdf}' if user_pdf else r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
+
+def process_pdf(pdf_path):
+    full_book = pdfExtract(pdf_path)
+    word_to_find = input('Enter a word: ')
+    word_count = full_book.word_count(word_to_find)
+    sentences_list = full_book.return_full_sentences(word_to_find)
+    return word_to_find, word_count, sentences_list
     
 
 def main():
     while True:
         print('Will return how many times a given word appears in a pdf\n'
               'Press Enter to default to the Big Book of AA')
-        
-        default_pdf = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
-        user_pdf = input('Enter the path of the pdf file you would like to search: ')
-        raw_pdf = rf'{user_pdf}'
-        
-        if user_pdf == '':
-            full_book = pdfExtract(default_pdf)
-        else:
-            full_book = pdfExtract(raw_pdf)
-        
-        word_to_find = input('Enter a word: ')
-        word_count = full_book.word_count(word_to_find)
-        sentences_list = full_book.return_full_sentences(word_to_find)
-        print(f'{word_to_find} appears {word_count} times in this PDF\n')
-    
+        pdf_path = get_user_pdf_path()
+        word_to_find, word_count, sentences_list = process_pdf(pdf_path)
         num = 0
         output_count = 0
+        print(f'{word_to_find} appears {word_count} times in this PDF\n')
 
         while num < len(sentences_list):
             
@@ -54,6 +49,7 @@ def main():
                 continue
         
         print(f'Showing {output_count} out of {len(sentences_list)} results')
+        
         run_again = input('Run the program again? (y/n) ')
         
         if run_again.lower() == 'n':
