@@ -4,12 +4,12 @@ from components.instanceCounter import pdfExtract
 nltk.download('punkt')
 
 
-DEFAULT_PATH = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
-
+AA_BIGBOOK = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
+KJV_BIBLE = r'"C:\Users\lilv4\OneDrive\Documents\kjvBible.pdf"'
 
 def get_user_pdf_path():
     user_pdf = input('Enter the path of the pdf file you would like to search: ')
-    return   rf'{user_pdf}' if user_pdf else DEFAULT_PATH
+    return   rf'{user_pdf}' if user_pdf else AA_BIGBOOK
 
 def analyze_pdf(pdf_path):
     full_book = pdfExtract(pdf_path)
