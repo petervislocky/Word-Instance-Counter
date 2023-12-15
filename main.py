@@ -19,20 +19,20 @@ def analyze_pdf(pdf_path):
     return word_to_find, word_count, sentences_list
 
 def display_sentences(sentences_list):
-        num = 0
+        index = 0
         output_count = 0
         
-        while num < len(sentences_list):
+        while index < len(sentences_list):
             
             for i in range(20):
-                if num < len(sentences_list):
+                if index < len(sentences_list):
                     output_count += 1
-                    print(f'{output_count}: {sentences_list[num]}\n')
-                    num += 1
+                    print(f'{output_count}: {sentences_list[index]}\n')
+                    index += 1
                 else:
                     break
             
-            if num >= len(sentences_list):
+            if index >= len(sentences_list):
                 break
             
             print(f'Showing {output_count} out of {len(sentences_list)} results')
