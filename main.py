@@ -5,7 +5,7 @@ nltk.download('punkt')
 
 
 AA_BIGBOOK = r'C:\Users\lilv4\OneDrive\Documents\AA-BigBook-4th-Edition.pdf'
-KJV_BIBLE = r'"C:\Users\lilv4\OneDrive\Documents\kjvBible.pdf"'
+KJV_BIBLE = r'C:\Users\lilv4\OneDrive\Documents\kjvBible.pdf'
 
 def get_user_pdf_path():
     user_pdf = input('Enter the path of the pdf file you would like to search: ')
